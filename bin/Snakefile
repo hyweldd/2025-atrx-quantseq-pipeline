@@ -1,0 +1,63 @@
+# -*- coding: utf-8; mode: python; tab-width: 4; -*-
+# vim: ft=python
+
+# Snakemake pipeline
+
+# written by hywel 2025/02/18
+
+import os
+import re
+
+
+# Constants ----
+
+PROJECT_DIR = os.getcwd()
+PROJECT_BIN = os.path.join(PROJECT_DIR, "bin")
+
+assert os.path.exists(PROJECT_DIR)
+assert os.path.exists(PROJECT_BIN)
+
+
+# Setup ----
+rds_files = set([
+    'trt_ATRXKI_CONTROL-vs-ctrl_ATRXWT_CONTROL.rds',
+    'trt_ATRXKI_cGASKO-vs-ctrl_ATRXWT_cGASKO.rds',
+    'trt_ATRXKI_STING1KO-vs-ctrl_ATRXWT_STING1KO.rds',
+    'trt_ATRXKI_IRF3KO-vs-ctrl_ATRXWT_IRF3KO.rds',
+    'trt_ATRXWT_cGASKO-vs-ctrl_ATRXWT_CONTROL.rds',
+    'trt_ATRXWT_STING1KO-vs-ctrl_ATRXWT_CONTROL.rds',
+    'trt_ATRXWT_IRF3KO-vs-ctrl_ATRXWT_CONTROL.rds',
+    'trt_ATRXKI_cGASKO-vs-ctrl_ATRXWT_CONTROL.rds',
+    'trt_ATRXKI_STING1KO-vs-ctrl_ATRXWT_CONTROL.rds',
+    'trt_ATRXKI_IRF3KO-vs-ctrl_ATRXWT_CONTROL.rds',
+    'trt_ATRXKI_WATER-vs-ctrl_ATRXWT_WATER.rds',
+    'trt_ATRXKI_ANIFRO-vs-ctrl_ATRXWT_ANIFRO.rds',
+    'trt_ATRXWT_ANIFRO-vs-ctrl_ATRXWT_WATER.rds',
+    'trt_ATRXKI_ANIFRO-vs-ctrl_ATRXKI_WATER.rds'
+])
+
+
+# Snakemake rules ----
+
+# Target rule ---
+rule target:
+    input:
+        expand("01_dds_rds/{fn}", fn=rds_files)
+
+# Pipeline rules ---
+rule create_deseq2_dds:
+    input:
+        "00_source_data/salmon.merged.gene_counts.tsv"
+    output:
+        "01_dds_rds/trt_{trt}-vs-ctrl_{ctrl}.rds"
+    log:
+        out = "01_dds_rds/trt_{trt}-vs-ctrl_{ctrl}.rds.out",
+        err = "01_dds_rds/trt_{trt}-vs-ctrl_{ctrl}.rds.err"
+    threads:
+        1
+    params:
+        script = os.path.join(PROJECT_BIN, "create_deseq2_rds.R")
+    shell:
+        r"""
+        {params.script} -i {input} -o 01_dds_rds -t {wildcards.trt} -c {wildcards.ctrl} > {log.out} 2> {log.err}
+        """

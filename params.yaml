@@ -1,0 +1,9 @@
+input: samplesheet.csv
+outdir: nf-core-results
+gtf: igenomes/Homo_sapiens/Ensembl/GRCh38/Annotation/Genes/Homo_sapiens.GRCh38.113.gtf
+fasta: igenomes/Homo_sapiens/Ensembl/GRCh38/Sequence/WholeGenomeFasta/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+trimmer: fastp
+extra_fastp_args: '--adapter_sequence AGATCGGAAGA --trim_poly_x'
+extra_star_align_args: "--alignIntronMax 1000000 --alignIntronMin 20 --alignMatesGapMax 1000000 --alignSJoverhangMin 8 --outFilterMismatchNmax 999 --outFilterMultimapNmax 20 --outFilterType BySJout --outFilterMismatchNoverLmax 0.1 --clip3pAdapterSeq AAAAAAAA"
+extra_salmon_quant_args: "--noLengthCorrection"
+

@@ -1,0 +1,12 @@
+Type: Project
+Description: Quantseq heatmap
+Depends:
+  codetools,
+  lattice,
+  MASS,
+  Matrix,
+  mgcv,
+  nlme,
+  tidyverse,
+  cowplot,
+  pheatmap
