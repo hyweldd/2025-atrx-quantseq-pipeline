@@ -270,14 +270,7 @@ create_interferon_genes_heatmap_source_table <- function(deseq2_results_tables =
   )
   
   experiments_to_plot <- c(
-    "trt_ATRXKI_CONTROL-vs-ctrl_ATRXWT_CONTROL.rds.deseq2_results.csv",
-    "trt_ATRXKI_cGASKO-vs-ctrl_ATRXWT_cGASKO.rds.deseq2_results.csv",
-    "trt_ATRXKI_STING1KO-vs-ctrl_ATRXWT_STING1KO.rds.deseq2_results.csv",
-    "trt_ATRXKI_IRF3KO-vs-ctrl_ATRXWT_IRF3KO.rds.deseq2_results.csv",
     "trt_ATRXKI_ANIFRO-vs-ctrl_ATRXKI_WATER.rds.deseq2_results.csv",
-    "trt_ATRXWT_cGASKO-vs-ctrl_ATRXWT_CONTROL.rds.deseq2_results.csv",
-    "trt_ATRXWT_STING1KO-vs-ctrl_ATRXWT_CONTROL.rds.deseq2_results.csv",
-    "trt_ATRXWT_IRF3KO-vs-ctrl_ATRXWT_CONTROL.rds.deseq2_results.csv",
     "trt_ATRXWT_ANIFRO-vs-ctrl_ATRXWT_WATER.rds.deseq2_results.csv"
   )
   
