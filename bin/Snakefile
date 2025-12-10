@@ -20,16 +20,6 @@ assert os.path.exists(PROJECT_BIN)
 
 # Setup ----
 rds_files = set([
-    'trt_ATRXKI_CONTROL-vs-ctrl_ATRXWT_CONTROL.rds',
-    'trt_ATRXKI_cGASKO-vs-ctrl_ATRXWT_cGASKO.rds',
-    'trt_ATRXKI_STING1KO-vs-ctrl_ATRXWT_STING1KO.rds',
-    'trt_ATRXKI_IRF3KO-vs-ctrl_ATRXWT_IRF3KO.rds',
-    'trt_ATRXWT_cGASKO-vs-ctrl_ATRXWT_CONTROL.rds',
-    'trt_ATRXWT_STING1KO-vs-ctrl_ATRXWT_CONTROL.rds',
-    'trt_ATRXWT_IRF3KO-vs-ctrl_ATRXWT_CONTROL.rds',
-    'trt_ATRXKI_cGASKO-vs-ctrl_ATRXWT_CONTROL.rds',
-    'trt_ATRXKI_STING1KO-vs-ctrl_ATRXWT_CONTROL.rds',
-    'trt_ATRXKI_IRF3KO-vs-ctrl_ATRXWT_CONTROL.rds',
     'trt_ATRXKI_WATER-vs-ctrl_ATRXWT_WATER.rds',
     'trt_ATRXKI_ANIFRO-vs-ctrl_ATRXWT_ANIFRO.rds',
     'trt_ATRXWT_ANIFRO-vs-ctrl_ATRXWT_WATER.rds',
